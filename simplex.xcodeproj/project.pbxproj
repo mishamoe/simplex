@@ -12,6 +12,17 @@
 		87794D4C1C0C46430023CB06 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87794D4A1C0C46430023CB06 /* Main.storyboard */; };
 		87794D4E1C0C46430023CB06 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87794D4D1C0C46430023CB06 /* Assets.xcassets */; };
 		87794D511C0C46430023CB06 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87794D4F1C0C46430023CB06 /* LaunchScreen.storyboard */; };
+		87794D591C0C46870023CB06 /* Operand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87794D581C0C46870023CB06 /* Operand.swift */; };
+		87794D5B1C0C46970023CB06 /* BaseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87794D5A1C0C46970023CB06 /* BaseType.swift */; };
+		87794D5D1C0C46DB0023CB06 /* Function.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87794D5C1C0C46DB0023CB06 /* Function.swift */; };
+		87794D5F1C0C46F20023CB06 /* Equation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87794D5E1C0C46F20023CB06 /* Equation.swift */; };
+		87794D611C0C47130023CB06 /* SetOfEquations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87794D601C0C47130023CB06 /* SetOfEquations.swift */; };
+		87794D631C0C472B0023CB06 /* Vector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87794D621C0C472B0023CB06 /* Vector.swift */; };
+		87794D651C0C475F0023CB06 /* VectorSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87794D641C0C475F0023CB06 /* VectorSet.swift */; };
+		877BD28E1C15AEB800B3C90C /* UserInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 877BD28D1C15AEB800B3C90C /* UserInput.swift */; };
+		87B692931C18386200DDB628 /* ResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B692921C18386200DDB628 /* ResultViewController.swift */; };
+		87B692951C187BF400DDB628 /* OutputGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B692941C187BF400DDB628 /* OutputGenerator.swift */; };
+		87B692971C1888E500DDB628 /* Plan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B692961C1888E500DDB628 /* Plan.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +33,17 @@
 		87794D4D1C0C46430023CB06 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		87794D501C0C46430023CB06 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87794D521C0C46430023CB06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		87794D581C0C46870023CB06 /* Operand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Operand.swift; sourceTree = "<group>"; };
+		87794D5A1C0C46970023CB06 /* BaseType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseType.swift; sourceTree = "<group>"; };
+		87794D5C1C0C46DB0023CB06 /* Function.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Function.swift; sourceTree = "<group>"; };
+		87794D5E1C0C46F20023CB06 /* Equation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Equation.swift; sourceTree = "<group>"; };
+		87794D601C0C47130023CB06 /* SetOfEquations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetOfEquations.swift; sourceTree = "<group>"; };
+		87794D621C0C472B0023CB06 /* Vector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Vector.swift; sourceTree = "<group>"; };
+		87794D641C0C475F0023CB06 /* VectorSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VectorSet.swift; sourceTree = "<group>"; };
+		877BD28D1C15AEB800B3C90C /* UserInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserInput.swift; sourceTree = "<group>"; };
+		87B692921C18386200DDB628 /* ResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultViewController.swift; sourceTree = "<group>"; };
+		87B692941C187BF400DDB628 /* OutputGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputGenerator.swift; sourceTree = "<group>"; };
+		87B692961C1888E500DDB628 /* Plan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Plan.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +78,18 @@
 			children = (
 				87794D461C0C46430023CB06 /* AppDelegate.swift */,
 				87794D481C0C46430023CB06 /* ViewController.swift */,
+				87B692941C187BF400DDB628 /* OutputGenerator.swift */,
+				87B692921C18386200DDB628 /* ResultViewController.swift */,
+				877BD28D1C15AEB800B3C90C /* UserInput.swift */,
 				87794D4A1C0C46430023CB06 /* Main.storyboard */,
+				87794D581C0C46870023CB06 /* Operand.swift */,
+				87794D5A1C0C46970023CB06 /* BaseType.swift */,
+				87794D5C1C0C46DB0023CB06 /* Function.swift */,
+				87794D5E1C0C46F20023CB06 /* Equation.swift */,
+				87794D601C0C47130023CB06 /* SetOfEquations.swift */,
+				87794D621C0C472B0023CB06 /* Vector.swift */,
+				87794D641C0C475F0023CB06 /* VectorSet.swift */,
+				87B692961C1888E500DDB628 /* Plan.swift */,
 				87794D4D1C0C46430023CB06 /* Assets.xcassets */,
 				87794D4F1C0C46430023CB06 /* LaunchScreen.storyboard */,
 				87794D521C0C46430023CB06 /* Info.plist */,
@@ -136,8 +169,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				87794D591C0C46870023CB06 /* Operand.swift in Sources */,
 				87794D491C0C46430023CB06 /* ViewController.swift in Sources */,
+				87B692971C1888E500DDB628 /* Plan.swift in Sources */,
+				87B692951C187BF400DDB628 /* OutputGenerator.swift in Sources */,
+				87794D631C0C472B0023CB06 /* Vector.swift in Sources */,
+				877BD28E1C15AEB800B3C90C /* UserInput.swift in Sources */,
+				87794D5B1C0C46970023CB06 /* BaseType.swift in Sources */,
+				87794D651C0C475F0023CB06 /* VectorSet.swift in Sources */,
 				87794D471C0C46430023CB06 /* AppDelegate.swift in Sources */,
+				87794D611C0C47130023CB06 /* SetOfEquations.swift in Sources */,
+				87794D5D1C0C46DB0023CB06 /* Function.swift in Sources */,
+				87794D5F1C0C46F20023CB06 /* Equation.swift in Sources */,
+				87B692931C18386200DDB628 /* ResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +331,7 @@
 				87794D571C0C46430023CB06 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
