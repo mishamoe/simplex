@@ -40,7 +40,7 @@ class OutputGenerator: NSObject {
         return inputData
     }
     
-    func getOutputData() -> NSMutableAttributedString {
+    func getInputDataAnalysis() -> NSMutableAttributedString {
         let outputData = NSMutableAttributedString()
         
         let header = generateHeader("Output\n")
@@ -81,6 +81,12 @@ class OutputGenerator: NSObject {
         let freeVariables = generateMultilineRow("Free variables: ", content: freeVariablesContent)
         outputData.appendAttributedString(freeVariables)
         outputData.appendAttributedString(NSAttributedString(string: "\n"))
+        
+        return outputData
+    }
+    
+    func getOutputData() -> NSMutableAttributedString {
+        let outputData = NSMutableAttributedString()
         
         // Initial plan
         let initialPlan = userInput.vectorSet.getInitialPlan()

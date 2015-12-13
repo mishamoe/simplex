@@ -20,6 +20,7 @@ class ResultViewController: UIViewController {
         if let outputGenerator = self.outputGenerator {
             let attributedText = NSMutableAttributedString()
             attributedText.appendAttributedString(outputGenerator.getInputData())
+            attributedText.appendAttributedString(outputGenerator.getInputDataAnalysis())
             attributedText.appendAttributedString(outputGenerator.getOutputData())
             
             resultTextField.attributedText = attributedText
