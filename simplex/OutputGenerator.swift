@@ -9,10 +9,31 @@
 import UIKit
 
 class OutputGenerator: NSObject {
-    let userInput: UserInput
+    static let instance = OutputGenerator()
     
-    init(userInput: UserInput) {
-        self.userInput = userInput
+    var userInput: UserInput!
+    static var plans: [Plan]!
+    static var marks: [Double]!
+    static var plansWithMarks: [[String : AnyObject]]!
+    
+    private override init() {
+        OutputGenerator.plans = [Plan]()
+        OutputGenerator.plansWithMarks = [[String : AnyObject]]()
+    }
+    
+    static func getInstance(userInput: UserInput) -> OutputGenerator {
+        instance.userInput = userInput
+        
+        return instance
+    }
+    
+    static func appendPlan(plan: Plan, marks: [Double]) {
+        OutputGenerator.plansWithMarks.append(
+            [
+                "plan" : plan,
+                "marks" : marks
+            ]
+        )
     }
     
     func getInputData() -> NSMutableAttributedString {
@@ -88,44 +109,58 @@ class OutputGenerator: NSObject {
     func getOutputData() -> NSMutableAttributedString {
         let outputData = NSMutableAttributedString()
         
-        // Initial plan
-        let initialPlan = userInput.vectorSet.getInitialPlan()
-        let initialPlanRow = generateMultilineRow("Initial plan:", content: initialPlan.getDescription())
-        outputData.appendAttributedString(initialPlanRow)
+        userInput.vectorSet.findOptimalPlan(userInput.function, searchParameter: userInput.searchParameter)
         
-        // Result of initial plan
-        if let result = userInput.function.compute(initialPlan) {
-            let initialPlanResult = generateMultilineRow("Result of initial plan: ", content: String(result))
-            outputData.appendAttributedString(initialPlanResult)
-        } else {
-            let initialPlanResult = generateRow("Result of initial plan: ", content: "ERROR", color: UIColor.redColor())
-            outputData.appendAttributedString(initialPlanResult)
-            return outputData
-        }
-        
-        // Marks for initial plan
-        let marksForInitialPlan = generateRow("Marks for initial plan:", content: "")
-        outputData.appendAttributedString(marksForInitialPlan)
-        let marks = userInput.vectorSet.getMarks(userInput.function)
-        let badVectorIndex = userInput.vectorSet.isOptimal(marks, parameter: userInput.searchParameter)
-        
-        for (index, mark) in marks.enumerate() {
-            var color: UIColor?
-            if let badIndex = badVectorIndex where badIndex == index {
-                color = UIColor.redColor()
-            }
+        if let plansWithMarks = OutputGenerator.plansWithMarks where plansWithMarks.count > 0 {
             
-            let markContent = "A[\(index)] => \(Int(mark))"
-            let markRow = generateRow("\t", content: markContent, color: color)
-            outputData.appendAttributedString(markRow)
-        }
-        
-        outputData.appendAttributedString(NSAttributedString(string: "\n"))
-        
-        // Optimal plan
-        let optimalPlan = userInput.vectorSet.findOptimalPlan(userInput.function, searchParameter: userInput.searchParameter)
-        if let functionResult = userInput.function.compute(optimalPlan) {
-            print("\(userInput.searchParameter.description()) value for function \(userInput.function.stringRepresentation) = \(functionResult)")
+            for (index, planWithMarks) in plansWithMarks.enumerate() {
+                if let plan = planWithMarks["plan"] as? Plan, let marks = planWithMarks["marks"] as? [Double] {
+                    
+                    let planHeaderText: String!
+                    let planResultHeaderText: String!
+                    let marksHeaderText: String!
+                    
+                    if index == 0 {
+                        planHeaderText = "Plan #\(index+1) (initial):"
+                        planResultHeaderText = "Result of plan #\(index+1) (initial): "
+                        marksHeaderText = "Marks for plan #\(index+1) (initial):"
+                    } else {
+                        planHeaderText = "Plan #\(index+1):"
+                        planResultHeaderText = "Result of plan #\(index+1): "
+                        marksHeaderText = "Marks for plan #\(index+1):"
+                    }
+                    
+                    // Plan
+                    let planRow = generateMultilineRow(planHeaderText, content: plan.getDescription())
+                    outputData.appendAttributedString(planRow)
+                    
+                    // Result of plan
+                    if let result = userInput.function.compute(plan) {
+                        let planResult = generateMultilineRow(planResultHeaderText, content: String(result))
+                        outputData.appendAttributedString(planResult)
+                    }
+                    
+                    // Marks for plan
+                    let marksForPlan = generateRow(marksHeaderText, content: "")
+                    outputData.appendAttributedString(marksForPlan)
+                    
+                    let badVectorIndex = userInput.vectorSet.isOptimal(marks, parameter: userInput.searchParameter)
+
+                    for (index, mark) in marks.enumerate() {
+                        var color: UIColor?
+                        if let badIndex = badVectorIndex where badIndex == index {
+                            color = UIColor.redColor()
+                        }
+                        
+                        let markContent = "A[\(index)] => \(Double(mark))"
+                        let markRow = generateRow("\t", content: markContent, color: color)
+                        outputData.appendAttributedString(markRow)
+                    }
+                    
+                    outputData.appendAttributedString(NSAttributedString(string: "\n"))
+                }
+                
+            }
         }
         
         return outputData

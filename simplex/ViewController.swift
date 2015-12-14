@@ -113,7 +113,7 @@ class ViewController: UIViewController {
 //                compute(userInput)
                 if let navigationController = segue.destinationViewController as? UINavigationController {
                     if let resultViewController = navigationController.topViewController as? ResultViewController {
-                        resultViewController.outputGenerator = OutputGenerator(userInput: userInput)
+                        resultViewController.outputGenerator = OutputGenerator.getInstance(userInput)
                     }
                 }
             }
@@ -125,8 +125,10 @@ class ViewController: UIViewController {
         
         let initialPlan = userInput.vectorSet.getInitialPlan()
         userInput.function.compute(initialPlan)
+        print(userInput.vectorSet.getMarks(userInput.function))
         
         let optimalPlan = userInput.vectorSet.findOptimalPlan(userInput.function, searchParameter: userInput.searchParameter)
+        print(userInput.vectorSet.getMarks(userInput.function))
         if let functionResult = userInput.function.compute(optimalPlan) {
             print("\(userInput.searchParameter.description()) value for function \(userInput.function.stringRepresentation) = \(functionResult)")
             return true

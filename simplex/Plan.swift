@@ -18,7 +18,7 @@ class Plan: NSObject {
     func getDescription() -> String {
         var description = ""
         
-        for (value, index) in values.enumerate() {
+        for (index, value) in values.enumerate() {
             let intIndex = Int(index+1)
             description += "x\(intIndex)=\(value), "
         }

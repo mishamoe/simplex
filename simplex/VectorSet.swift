@@ -294,6 +294,9 @@ class VectorSet: NSObject {
     
     func findOptimalPlan(function: Function, searchParameter: SearchParameter) -> Plan {
         var optimalPlan = getInitialPlan()
+        var marks = getMarks(function)
+        //Добавляем изначальный план для последующего вывода пользователю
+        OutputGenerator.appendPlan(optimalPlan, marks: marks)
         
         while let badVectorIndex = isOptimal(getMarks(function), parameter: searchParameter) {
             //Находим индекс минимального значения Theta -
@@ -310,6 +313,10 @@ class VectorSet: NSObject {
             } else {
                 break
             }
+            
+            marks = getMarks(function)
+            //Добавляем новый план для последующего вывода пользователю
+            OutputGenerator.appendPlan(optimalPlan, marks: marks)
         }
         
         return optimalPlan
