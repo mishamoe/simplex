@@ -9,22 +9,12 @@
 import UIKit
 
 class OutputGenerator: NSObject {
-    static let instance = OutputGenerator()
-    
     var userInput: UserInput!
-    static var plans: [Plan]!
-    static var marks: [Double]!
-    static var plansWithMarks: [[String : AnyObject]]!
     
-    private override init() {
-        OutputGenerator.plans = [Plan]()
-        OutputGenerator.plansWithMarks = [[String : AnyObject]]()
-    }
+    static var plansWithMarks = [[String : AnyObject]]()
     
-    static func getInstance(userInput: UserInput) -> OutputGenerator {
-        instance.userInput = userInput
-        
-        return instance
+    init(userInput: UserInput) {
+        self.userInput = userInput
     }
     
     static func appendPlan(plan: Plan, marks: [Double]) {
@@ -111,8 +101,9 @@ class OutputGenerator: NSObject {
         
         userInput.vectorSet.findOptimalPlan(userInput.function, searchParameter: userInput.searchParameter)
         
-        if let plansWithMarks = OutputGenerator.plansWithMarks where plansWithMarks.count > 0 {
-            
+        let plansWithMarks = OutputGenerator.plansWithMarks
+        
+        if plansWithMarks.count > 0 {
             for (index, planWithMarks) in plansWithMarks.enumerate() {
                 if let plan = planWithMarks["plan"] as? Plan, let marks = planWithMarks["marks"] as? [Double] {
                     
@@ -159,7 +150,6 @@ class OutputGenerator: NSObject {
                     
                     outputData.appendAttributedString(NSAttributedString(string: "\n"))
                 }
-                
             }
         }
         

@@ -96,8 +96,7 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func unwind(segue: UIStoryboardSegue) {
-    }
+    @IBAction func unwind(segue: UIStoryboardSegue) {}
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if identifier == "compute" {
@@ -113,7 +112,7 @@ class ViewController: UIViewController {
 //                compute(userInput)
                 if let navigationController = segue.destinationViewController as? UINavigationController {
                     if let resultViewController = navigationController.topViewController as? ResultViewController {
-                        resultViewController.outputGenerator = OutputGenerator.getInstance(userInput)
+                        resultViewController.outputGenerator = OutputGenerator(userInput: userInput)
                     }
                 }
             }
