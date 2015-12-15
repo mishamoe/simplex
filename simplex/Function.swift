@@ -9,11 +9,10 @@
 import UIKit
 
 class Function: BaseType {
-    var stringRepresentation: String
     
     init(stringFunction: String) {
-        self.stringRepresentation = stringFunction
         super.init()
+        self.stringRepresentation = stringFunction
         handleOperands(stringFunction)
     }
     

@@ -9,7 +9,6 @@
 import UIKit
 
 class Equation: BaseType {
-    var stringRepresentation: String
     var solution: Double = 0
     
     init?(stringEquation: String) {

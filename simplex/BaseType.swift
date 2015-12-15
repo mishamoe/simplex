@@ -10,6 +10,7 @@ import UIKit
 
 class BaseType: NSObject {
     var operands: [Operand] = [Operand]()
+    var stringRepresentation: String = ""
     
     func handleOperands(operands: String) {
         //Разбиваем строку на операнды
