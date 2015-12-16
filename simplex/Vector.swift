@@ -20,8 +20,8 @@ class Vector: NSObject {
         self.coefficients = coefficients
     }
     
-    func addCoefficient(coef: Double) {
-        coefficients.append(coef)
+    func addCoefficient(coefficient: Double) {
+        coefficients.append(coefficient)
     }
     
     func getDescription() -> String {

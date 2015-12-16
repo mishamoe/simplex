@@ -131,7 +131,7 @@ class VectorSet: NSObject {
         return notBasisIndices
     }
     
-    func decomposeVectorByBasis(index: Int) -> [Double]? {
+    private func decomposeVectorByBasis(index: Int) -> [Double]? {
         let basisIndices = getBasisVectorsIndices()
         
         //Проверяем не является ли вектор одним из базисных
@@ -209,7 +209,7 @@ class VectorSet: NSObject {
         return badVectorIndex
     }
     
-    func findNewPlan(inputVectorIndex: Int) -> Plan {
+    private func findNewPlan(inputVectorIndex: Int) -> Plan {
         let plan = getInitialPlan()
         let decomposition = decomposeVectorByBasis(inputVectorIndex)!
         
@@ -228,7 +228,7 @@ class VectorSet: NSObject {
         return Plan(values: newPlan)
     }
     
-    func replaceVectorsInBasis(inputVector: Vector, outputVector: Vector) {
+    private func replaceVectorsInBasis(inputVector: Vector, outputVector: Vector) {
         //Находим необходимый индекс коэффициента 1
         //в векторе для вывода из базиса
         var oneCoefficientIndex: Int?
@@ -272,7 +272,7 @@ class VectorSet: NSObject {
         }
     }
     
-    func findVectorForOuputFromBasis(index: Int) -> [String : Double] {
+    private func findVectorForOuputFromBasis(index: Int) -> [String : Double] {
         let plan = getInitialPlan()
         let decomposition = decomposeVectorByBasis(index)!
         

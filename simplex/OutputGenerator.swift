@@ -9,7 +9,7 @@
 import UIKit
 
 class OutputGenerator: NSObject {
-    var userInput: UserInput!
+    private var userInput: UserInput!
     
     static var plansWithMarks = [[String : AnyObject]]()
     
@@ -156,7 +156,7 @@ class OutputGenerator: NSObject {
         return outputData
     }
     
-    private func generateHeader(title: String) ->NSAttributedString {
+    private func generateHeader(title: String) -> NSAttributedString {
         return NSAttributedString(
             string: title,
             attributes: [
@@ -168,8 +168,6 @@ class OutputGenerator: NSObject {
     
     private func generateRow(label: String, content: String, color: UIColor?=nil) -> NSAttributedString {
         let row = NSMutableAttributedString()
-        
-        
         
         let rowTitle = NSAttributedString(string: label, attributes: [NSFontAttributeName : UIFont.boldSystemFontOfSize(14)])
         

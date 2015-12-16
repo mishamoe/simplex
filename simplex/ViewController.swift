@@ -15,8 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var stackView: UIStackView!
     
-    var defaultTintColor: UIColor!
-    var userInput: UserInput?
+    private var defaultTintColor: UIColor!
+    private var userInput: UserInput?
     
     
     override func viewDidLoad() {
@@ -64,6 +64,8 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func unwind(segue: UIStoryboardSegue) {}
+    
     private func createConstraint() -> UIView {
         // Text field
         let textField = UITextField()
@@ -86,7 +88,7 @@ class ViewController: UIViewController {
         return stack
     }
     
-    func deleteConstraint(sender: UIButton) {
+    private func deleteConstraint(sender: UIButton) {
         if let stack = sender.superview {
             UIView.animateWithDuration(0.25, animations: { () -> Void in
                 stack.hidden = true
@@ -95,8 +97,6 @@ class ViewController: UIViewController {
             })
         }
     }
-    
-    @IBAction func unwind(segue: UIStoryboardSegue) {}
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if identifier == "compute" {
@@ -109,7 +109,6 @@ class ViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "compute" {
             if let userInput = self.userInput {
-//                compute(userInput)
                 if let navigationController = segue.destinationViewController as? UINavigationController {
                     if let resultViewController = navigationController.topViewController as? ResultViewController {
                         resultViewController.outputGenerator = OutputGenerator(userInput: userInput)
@@ -117,23 +116,6 @@ class ViewController: UIViewController {
                 }
             }
         }
-    }
-    
-    private func compute(userInput: UserInput) -> Bool {
-        print(userInput.vectorSet.getVectorsDescription())
-        
-        let initialPlan = userInput.vectorSet.getInitialPlan()
-        userInput.function.compute(initialPlan)
-        print(userInput.vectorSet.getMarks(userInput.function))
-        
-        let optimalPlan = userInput.vectorSet.findOptimalPlan(userInput.function, searchParameter: userInput.searchParameter)
-        print(userInput.vectorSet.getMarks(userInput.function))
-        if let functionResult = userInput.function.compute(optimalPlan) {
-            print("\(userInput.searchParameter.description()) value for function \(userInput.function.stringRepresentation) = \(functionResult)")
-            return true
-        }
-        
-        return false
     }
     
     private func handleUserInput() -> Bool {

@@ -12,8 +12,10 @@ class Equation: BaseType {
     var solution: Double = 0
     
     init?(stringEquation: String) {
-        self.stringRepresentation = stringEquation
         super.init()
+        
+        self.stringRepresentation = stringEquation
+        
         //Если в уравнении нету символа "="
         if let index = stringEquation.characters.indexOf("=") {
             //Левая часть уравнения
