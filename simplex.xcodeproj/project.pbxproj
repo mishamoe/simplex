@@ -78,9 +78,9 @@
 			children = (
 				87794D461C0C46430023CB06 /* AppDelegate.swift */,
 				87794D481C0C46430023CB06 /* ViewController.swift */,
+				877BD28D1C15AEB800B3C90C /* UserInput.swift */,
 				87B692941C187BF400DDB628 /* OutputGenerator.swift */,
 				87B692921C18386200DDB628 /* ResultViewController.swift */,
-				877BD28D1C15AEB800B3C90C /* UserInput.swift */,
 				87794D4A1C0C46430023CB06 /* Main.storyboard */,
 				87794D641C0C475F0023CB06 /* VectorSet.swift */,
 				87794D581C0C46870023CB06 /* Operand.swift */,

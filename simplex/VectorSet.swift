@@ -50,7 +50,7 @@ class VectorSet: NSObject {
         }
     }
     
-    func addVector(vector: Vector) {
+    private func addVector(vector: Vector) {
         self.vectors.append(vector)
     }
     

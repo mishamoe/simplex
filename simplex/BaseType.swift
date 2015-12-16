@@ -29,7 +29,7 @@ class BaseType: NSObject {
         addOperand(operand)
     }
     
-    func addOperand(stringOperand: String) {
+    private func addOperand(stringOperand: String) {
         if let operand = Operand(operand: stringOperand) {
             operands.append(operand)
         }

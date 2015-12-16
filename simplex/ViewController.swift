@@ -64,7 +64,9 @@ class ViewController: UIViewController {
         }
     }
     
-    @IBAction func unwind(segue: UIStoryboardSegue) {}
+    @IBAction func unwind(segue: UIStoryboardSegue) {
+        OutputGenerator.plansWithMarks = [[String : AnyObject]]()
+    }
     
     private func createConstraint() -> UIView {
         // Text field
