@@ -145,7 +145,6 @@
                                 <segue destination="iI2-4L-jsU" kind="unwind" unwindAction="unwind:" id="o8N-h8-cAI"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Export" id="TqS-Vd-3K0"/>
                     </navigationItem>
                     <connections>
                         <outlet property="resultTextField" destination="pb1-wR-MKf" id="gu1-P3-H8W"/>
